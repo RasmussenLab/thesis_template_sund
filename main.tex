@@ -1,3 +1,4 @@
+
 %% LLT: Turn off some annoying warnings...
 \RequirePackage{silence}
 \WarningFilter{titlesec}{Non standard sectioning command}
@@ -7,9 +8,8 @@
 % *********************************************************
 % CHOOSE THEME (ucph, sund, science, hum, samf, jura, teo)
 % *********************************************************
-\newcommand{\thesisTheme}{sund} % to colortheme and titlepage image
+\newcommand{\thesisTheme}{ucph} % to colortheme and titlepage image
 \newcommand{\frontpageimage}{cover_image.png} % cover image
-
 
 % *********************************************************
 % DOCUMENT CLASS
@@ -52,39 +52,89 @@
 % University of Copenhagen
 \newcommand{\thesisUniversity}{\protect{University of Copenhagen}}
 \newcommand{\thesisFaculty}{Faculty of Health and Medical Sciences}
-\newcommand{\thesisInstitute}{Masters Degree in Human Biology}
+\newcommand{\thesisInstitute}{PhD}
 \newcommand{\thesisCity}{Copenhagen N}
 \newcommand{\thesisAddress}{Blegdamsvej 3B}
 \newcommand{\thesisPostal}{2200}
 
-% External institution: University of Sussex
-\newcommand{\thesisUniSus}{\protect{University of Sussex}}
-\newcommand{\thesisUniSusDep}{Department of Life Sciences}
+% **************************************************
+% MY COMMANDS and packages
+% **************************************************
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{#1}}     % Have dois as links
+\newcommand{\https}[1]{\href{https://#1}{#1}}            % make any https link
+%\usepackage{enumitem}                                   % Make item lists without numbers/bullets - already included in ucphthesis, therefore commented out here
+\usepackage{dirtytalk}                                  % In-line quotations using \say{}
+\usepackage{multirow}                                   % Multirow in table
+\usepackage{graphicx}                                   % More table stuff
+\usepackage{makecell}                                   % Get linebreak in table cell
+\usepackage{tcolorbox}                                  % Make a colored box
+\definecolor{colorforbox}{RGB}{247,249,254}             % color for colored box
+%\renewcommand*{\bibfont}{\normalfont\footnotesize}       % change size of bibliography. footnotesize can be used for a bit smaller size.
+\usepackage{amsmath}                                    % for making equations
+\usepackage[symbol]{footmisc}                           % make symbols available for footnote
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}        % change footnote to use symbols. Symbol numbers found here: https://tex.stackexchange.com/questions/826/symbols-instead-of-numbers-as-footnote-markers
+\usepackage{wrapfig}                                    % Have text wrap around figures (used for QR code in BALDR intro)
 
+\usepackage{pdfpages}                                   % Insert pdfs
+	\includepdfset{
+		pages = {1-}, % from page 1 to the final page
+		pagecommand = {}, % uses global document layout
+		frame = true, % draw discrete border around page
+		offset = 0mm 0mm, % outward/upward
+		scale = 0.84,
+    link=true, % allow pointing to inserted pages
+    rotateoversize % rotates landscape pages
+	}
+ \newcommand{\includepdfsupp}{                         % Insert supplementary pdf
+  \includepdf[
+    nup=1x2, 
+    delta=0mm 2mm, 
+    angle=-90, 
+  ]
+    }
+
+\newtcolorbox[auto counter,number within=chapter]{bluebox}[2][]{ % Make blue boxes.
+toptitle=3mm, colback=colorforbox, colframe=colorforbox, coltitle=black, 
+titlerule=1mm, fonttitle=\bfseries\sffamily, fontupper=\sffamily\small, 
+sharp corners, float, floatplacement=t,
+title=Box~\thetcbcounter~#2, #1}
+
+\newcommand\blankpagenumbered{%
+    \null
+    %\thispagestyle{empty}%
+    %\addtocounter{page}{-1}%
+    \newpage}
 
 % *********************************************************
 % PACKAGES
 % *********************************************************
-
 \usepackage[					% UCPH thesis style
     figuresep=colon,        
     sansserif=false,        
     hangfigurecaption=false,
     hangsection=true,       
-    hangsubsection=true,    
+    hangsubsection=true,
+    hangsubsubsection=true,
     colorize=full,          
     colortheme={\thesisTheme},  % ucph, sund, science, hum, etc.?
     bibsys=biber,
     bibfile=references,       % defines your .bib file
-    bibstyle=authoryear,        % refer to https://bit.ly/2YsvIJz
+    bibstyle=nature,        % refer to https://da.overleaf.com/learn/latex/Biblatex_citation_styles
 ]{ucphthesis}
 \hypersetup{					% setup the hyperref-package options
 	pdftitle={\thesisTitle},	% 	- title (PDF meta)
 	pdfsubject={\thesisSubject},% 	- subject (PDF meta)
 	pdfauthor={\thesisName},	% 	- author (PDF meta)
 	plainpages=false,			% 	-
-	colorlinks=false,			% 	- colorize links
-	pdfborder={0 0 0},			% 	-
+	colorlinks=true,			% 	- colorize links
+        citecolor=[RGB]{188 60 48},
+        linkcolor=[RGB]{188 60 48},
+        anchorcolor=.,
+        filecolor=.,
+        menucolor=.,
+        runcolor=.,
+        urlcolor=[RGB]{188 60 48},
+        pdfborder={0 0 0},			% 	-
 	breaklinks=true,			% 	- allow line break inside links
 	bookmarksnumbered=true,		%
 	bookmarksopen=true			%
@@ -95,7 +145,6 @@
 % *********************************************************
 %\subject{\vspace{4.5cm} \thesisSubject}
 %\title{\thesisTitle}
-%\subtitle{\thesisSubtitle}
 %\author{\thesisName}
 %\date{\thesisDate}
 
@@ -116,9 +165,11 @@
 \pagenumbering{roman}
 %\pagestyle{empty}				            % no header or footers
 %\AddToShipoutPicture*{\TitleBackground}     % adding background picture
+%\input{frontbackmatter/coverpage}
 \input{frontbackmatter/titlepage.tex}
 
 \pagestyle{plain}
+
 %\input{frontbackmatter/quotes.tex}        % INCLUDE Quotes
 \input{frontbackmatter/preface.tex}       % INCLUDE Preface
 \input{frontbackmatter/acknowledgements.tex} % INCLUDE Acknowledgements
@@ -130,7 +181,11 @@
 
 
 \setcounter{tocdepth}{2}		% define depth of toc
-\tableofcontents				% display table of contents
+%\tableofcontents				% display table of contents
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
 \clearpage
 
 
@@ -155,6 +210,8 @@
 % Back matter
 % --------------------------
 \input{frontbackmatter/bibliography.tex}
+%\input{frontbackmatter/appendix.tex}
+
 
 % ********************************************************* 
 % END OF THESIS

@@ -60,6 +60,11 @@
 \define@boolkey[ct]{cthesis}{hangsubsection}[true]{}
 \setkeys[ct]{cthesis}{hangsubsection=true}
 
+% MY CHANGES: OPTION hangsubsubsection
+% --> values = true|false
+\define@boolkey[ct]{cthesis}{hangsubsubsection}[true]{}
+\setkeys[ct]{cthesis}{hangsubsubsection=true}
+
 % OPTION figuresep
 % --> values = none|colon|period|space|quad|endash
 \define@choicekey*[ct]{cthesis}{figuresep}{none,colon,period,space,quad,newline,endash}[endash]{\def\cthesis@figuresep{#1}}
@@ -75,8 +80,7 @@
 \define@choicekey*[ct]{cthesis}{colortheme}[\val\themenr]{ucph,sund,science,hum,samf,jura,teo}[ucph]{\def\cthesis@colortheme{\themenr}}
 \setkeys[ct]{cthesis}{colortheme=ucph}
 
-% OPTION bibsys
-% --> values = biber|bibtex
+% --> values =biber|bibtex
 \define@choicekey*[ct]{cthesis}{bibsys}[\val\bibsysnr]{biber,bibtex}[bibtex]{\def\cthesis@bibsys{#1}}
 \setkeys[ct]{cthesis}{bibsys=bibtex}
 
@@ -87,16 +91,14 @@
 
 % OPTION bibstyle
 % --> values = alphabetic|numeric|authoryear
-\define@choicekey*[ct]{cthesis}{bibstyle}[\val\bibstylenr]{alphabetic,numeric,authoryear}[alphabetic]{\def\cthesis@bibstyle{#1}}
-\setkeys[ct]{cthesis}{bibstyle=alphabetic}
-
+\define@choicekey*[ct]{cthesis}{bibstyle}[\val\bibstylenr]{alphabetic,numeric,authoryear,nature}[alphabetic]{\def\cthesis@bibstyle{#1}}
+\setkeys[ct]{cthesis}{bibstyle=numeric}
 
 \DeclareOptionX*{
 	\PackageWarning{ucphthesis}{Unknown option ‘\CurrentOption’}%
 }
 
 \ProcessOptionsX[ct]<cthesis>
-
 
 % **************************************************
 % Color Definitions
@@ -297,6 +299,13 @@
 \RequirePackage{afterpage}          % allows figures to have their own page
 \RequirePackage[export]{adjustbox}  % allows positioning of figures
 \RequirePackage{changepage}
+\RequirePackage[vertfit]{breakurl} 
+
+
+\RequirePackage{array}
+\RequirePackage{multirow}
+\RequirePackage{floatrow}
+\RequirePackage{fullwidth}
 
 %
 \RequirePackage[					% modify figure and table captions
@@ -321,13 +330,13 @@
 	includefoot,					% 	- include footer space
 	includemp,						% 	- include side note space
 	bindingoffset=0.5cm,			% 	- binding correction (exclude with even margins)
-	top=1cm,						% 	- total body: top margin
+	top=2.5cm,						% 	- total body: top margin % MY CHANGES: Set to 2.5 instead of 1cm (mirrors footer space 
 	left=1.5cm,					% 	- total body: left margin (odd pages)(2.75 for even margins)
 	right=0.5cm,					% 	- total body: right margin (odd pages)
 	bottom=1.5cm,					% 	- total body: bottom margin
 	marginparwidth=1.75cm,			% 	- width for side note
 	marginparsep=10pt,				% 	- space between notes and body text (content)
-	footskip=2cm,					% 	- footer skip size
+	footskip=1cm,					% 	- footer skip size % MY CHANGES: set to 1cm instead of 2 cm
 ]{geometry}
 %
 \RequirePackage[					% advanced quotes
@@ -550,10 +559,11 @@
 
 \newcommand{\thesispartlabelfont}{\color{ctcolorpartnum}\book\fontsize{60}{60}\selectfont}
 \newcommand{\thesispartfont}{\color{ctcolorparttext}\huge \tgherosfont\selectfont}
-\newcommand{\thesischapterfont}{\color{ctcolorblack}\huge \fontfamily{phv}\selectfont}
+\newcommand{\thesischapterfont}{\color{ctcolorblack}\huge \fontfamily{phv}\selectfont} 
 %\newcommand{\thesissectionfont}{\color{ctcolormain}\LARGE\bfseries \tgherosfont}
-\newcommand{\thesissectionfont}{\color{ctcolorsection}\LARGE \tgherosfont}
-\newcommand{\thesissubsectionfont}{\color{ctcolorsubsection}\Large \tgherosfont}
+\newcommand{\thesissectionfont}{\color{ctcolorsection}\large\tgherosfont} % MY CHANGES: Change from LARGE to large
+\newcommand{\thesissubsectionfont}{\color{ctcolorsubsection}\normalsize \tgherosfont} % MY CHANGES: Change from Large to normalsize
+\newcommand{\thesissubsubsectionfont}{\color{ctcolorsubsection}\small \tgherosfont} % MY CHANGES: Added 
 \newcommand{\thesisparagraphfont}{\color{ctcolorparagraph}\tgherosfont\small\bfseries}
 %
 % headings
@@ -561,7 +571,7 @@
 \setkomafont{chapter}{\thesischapterfont} % for chapter entries
 \setkomafont{section}{\thesissectionfont} % for section entries
 \setkomafont{subsection}{\thesissubsectionfont} % for section entries
-\addtokomafont{subsubsection}{\tgherosfont}
+\setkomafont{subsubsection}{\thesissubsubsectionfont} % MY CHANGES: Added
 %\addtokomafont{paragraph}{\tgherosfont}
 \setkomafont{paragraph}{\thesisparagraphfont}
 
@@ -613,19 +623,19 @@
 %
 \titleformat{\chapter}[display]%
 	{\usekomafont{chapter}}%
-	{\vspace{-8em}\raggedleft{%
+	{\vspace{-8em}\raggedleft{% MY CHANGES: changed from -8em to -11em to lift up the chapter name
 		{\color{ctcolorchapterline}%
 			\rule[-5pt]{2pt}{6cm}}\quad%
 		{\color{ctcolorchapternum}
 			\fontsize{60}{60}\selectfont\thechapter}%
 		}%
 	}%
-	{-2.1em}%
+	{-2.1em}% NOTE: adjusts so that chapter title is on line with chapter number
 	{\ctformatchapter}%
 	[\phantomsection]
 %
 % > formats: \section
-\titlespacing{\section}{0em}{.75em}{.2em}%[0pt]
+\titlespacing{\section}{0em}{.75em}{.2em}%[0pt] 
 %
 %\ifthenelse{\boolean{@sectionlabeloutside}}%
 \ifct@cthesis@hangsection
@@ -651,7 +661,7 @@
 \fi
 %
 % > formats: \subsection
-\titlespacing{\subsection}{0em}{.5em}{0em}%[0pt]
+\titlespacing{\subsection}{0.5em}{0em}{0em}%[0pt]
 %\ifthenelse{\boolean{@subsectionlabeloutside}}%
 \ifct@cthesis@hangsubsection
 %	{%
@@ -674,6 +684,33 @@
 %	}
 \fi
 %
+
+% > formats: \subsubsection
+\titlespacing{\subsubsection}{0em}{0em}{-1em}%[0pt]
+%\ifthenelse{\boolean{@subsectionlabeloutside}}%
+\ifct@cthesis@hangsubsubsection
+%	{%
+		\titleformat{\subsubsection}[hang]%
+			{\usekomafont{subsubsection}}%
+			{\color{ctcolorblack}
+			    \thesubsubsection
+			    \hspace*{10pt}}%
+			{0pt}%
+			{\raggedright}%
+			%[\phantomsection]
+%	}{%
+\else
+		\titleformat{\subsubsection}[block]%
+			{\usekomafont{subsubsection}}%
+			{\color{ctcolorblack}\thesubsubsection\hspace*{10pt}}%
+			{0pt}%
+			{\raggedright}%
+			[\phantomsection]
+%	}
+\fi
+%
+
+
 % > formats: \paragraph
 \titlespacing{\paragraph}{0pt}{\parsep}{1em}%[0pt]
 % \titleformat{\paragraph}[runin]%
@@ -756,9 +793,10 @@
 
 \def\KUbold{\fontseries{bx}\selectfont}
 \def\KUsemibold{\fontseries{sb}\selectfont}
+\def\MYthesisname{\fontseries{m}\selectfont}
 \def\KU@SUBMISSIONSTATEMENT{%
 This thesis has been submitted to the Graduate School
-of the Faculty of Health and Medical Sciences, University of Copenhagen%
+of the Faculty of Health and Medical Sciences, University of Copenhagen% Added "on \today"
 }
 
 \newcommand\makekutitle{
@@ -767,8 +805,8 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen%
   \AddToShipoutPicture*{\put(-35,   -115){\includegraphics*{logos/\thesisTheme-english}}}
 
   \ifthenelse{\equal{\frontpageimage}{}}{}{
-    \AddToShipoutPicture*{\put(100, 250){
-      {\includegraphics*[width=100mm, height=100mm]{theme/\frontpageimage}}
+    \AddToShipoutPicture*{\put(80, 200){
+      {\includegraphics*[width=120mm, height=120mm]{theme/\frontpageimage}}
     }}
   }
 
@@ -777,23 +815,22 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen%
   \end{textblock}
 
   \begin{textblock}{12}(1.14, 12)
-    \noindent\fontsize{28pt}{30pt}\KUsemibold\thesisTitle
-	\par
-    \noindent\fontsize{14pt}{16pt}\KUsemibold\thesisSubtitle
-    \par\vspace{4mm}
-    \noindent\fontsize{16pt}{18pt}\KUsemibold\thesisName
+    \noindent\fontsize{19pt}{23pt}\KUsemibold\thesisTitle
+    \par\vspace{1mm}
+    \noindent\fontsize{14pt}{16pt}\KUsemibold\thesisName
   \end{textblock}
 
   \begin{textblock}{12}(1.14, 13)
-    \par\vspace{2mm}
+    \par\vspace{0.2mm}
     \begingroup
-      \par\vspace{4mm}
-      \noindent\today
+      \par\vspace{8mm}
+      \noindent\thesisDate
     \endgroup
-    \par\vspace{2mm}
+    \par\vspace{1mm}
     \fontsize{11pt}{12pt}
     \noindent\KU@SUBMISSIONSTATEMENT
   \end{textblock}
+
 
   \phantom{...}
   \newpage
@@ -824,4 +861,37 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen%
             \vfill
 }}}
 
+%from benja thesis
+\definecolor{blu}{RGB}{29, 89, 168}
+\definecolor{rosso}{RGB}{245, 24, 0}
+\definecolor{cartazucchero}{RGB}{130, 180, 245}
+\definecolor{verde}{RGB}{205, 245, 44}
+\definecolor{oliva}{RGB}{109, 164, 95}
 
+\newcommand{\pseudopart}[2][\quad, \cleardoublepage]{%
+    \cleardoublepage
+    \thispagestyle{empty}
+    \pagecolor{blu}
+    \begin{fullwidth}
+        ~\vfill
+        ~\vfill
+        \begin{flushright}
+          {\fontsize{60}{75}\color{black}\selectfont#1\quad}
+		  \phantomsection
+			\addcontentsline{toc}{section}{#1}
+        \end{flushright}
+        ~\vfill
+    \end{fullwidth}
+    \newpage
+    \afterpage{\pagecolor{white}}
+    \thispagestyle{empty}
+    \hbox{}
+    #2 % so we can let subsequent chapter do \cleardoublepage when relevant (e.g. glossaries)
+}
+
+\newcommand{\fakesection}[1]{%
+  \par\refstepcounter{section}% Increase section counter
+  \sectionmark{#1}% Add section mark (header)
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+  % Add more content here, if needed.
+}

@@ -9,3 +9,6 @@
 *.run.xml
 *.synctex.gz
 *.toc
+
+# add to ignore list
+!main.pdf

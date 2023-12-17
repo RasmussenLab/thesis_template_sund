@@ -8,7 +8,12 @@
 
 % ************************************************** -->
 
-## README:
+# Readme
+
+Thanks to Torie M. Muse, Davide Placido, Agnete T. Lundgaard and benja for their additons to the current layout.
+
+
+## README by Rolad-Arbøl
 
 This work is a derivative of the amazing *Clean Thesis* style developed by Ricardo Langner (http://cleanthesis.der-ric.de). I have adjusted it to adapt a faculty-specific layout based on a single input (the \thesisTheme command). 
 
@@ -35,7 +40,6 @@ This work has the LPPL maintenance status `maintained'.
 The Current Maintainer of this work is M. Roald-Arbøl.
 This work consists of all files listed in below.
 
-# CONTENTS OF THE UCPH STYLE
 
 ```
 ucphthesis/
@@ -55,10 +59,8 @@ ucphthesis/
 
 Since the bulk work was done by Ricardo Langner in compiling the Clean Thesis package, below is his README.
 
-# Clean Thesis
+# Clean Thesis Ricardo Langner
 *-- A LaTeX Style for Thesis Documents --*
-
-## Readme
 
 **Clean, Simple, Elegant**
 *Clean Thesis* is a LaTeX style for thesis documents, developed for my diploma thesis (Diplomarbeit). The style can be understood as my personal compromise — a typical clean looking scientific document combined and polished with minor beautifications.
