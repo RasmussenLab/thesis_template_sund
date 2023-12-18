@@ -166,17 +166,17 @@ title=Box~\thetcbcounter~#2, #1}
 %\pagestyle{empty}				            % no header or footers
 %\AddToShipoutPicture*{\TitleBackground}     % adding background picture
 %\input{frontbackmatter/coverpage}
-\input{frontbackmatter/titlepage.tex}
+\input{frontbackmatter/0_titlepage.tex}
 
 \pagestyle{plain}
 
 %\input{frontbackmatter/quotes.tex}        % INCLUDE Quotes
-\input{frontbackmatter/preface.tex}       % INCLUDE Preface
-\input{frontbackmatter/acknowledgements.tex} % INCLUDE Acknowledgements
-\input{frontbackmatter/summary.tex}      % INCLUDE summary
-\input{frontbackmatter/danish_summary.tex}      % INCLUDE danish summary
-\input{frontbackmatter/abbreviations.tex}    % INCLUDE Rationale
-\input{frontbackmatter/figures_tables.tex}    % INCLUDE Rationale
+\input{frontbackmatter/1_preface.tex}       % INCLUDE Preface
+\input{frontbackmatter/2_acknowledgements.tex} % INCLUDE Acknowledgements
+\input{frontbackmatter/3_summary.tex}      % INCLUDE summary
+\input{frontbackmatter/4_danish_summary.tex}      % INCLUDE danish summary
+\input{frontbackmatter/5_abbreviations.tex}    % INCLUDE Rationale
+\input{frontbackmatter/6_figures_tables.tex}    % INCLUDE Rationale
 \clearpage
 
 
@@ -196,21 +196,21 @@ title=Box~\thetcbcounter~#2, #1}
 \setcounter{page}{1}			% set page counter
 \pagestyle{maincontentstyle} 	% fancy header and footer
 
-\input{mainmatter/introduction.tex} % INCLUDE Introduction
-\input{mainmatter/methods.tex}      % INCLUDE Methods
-\input{mainmatter/aims.tex}         % INCLUDE Hypothesis
-\input{mainmatter/rationale.tex}    % INCLUDE Rationale
-\input{mainmatter/results.tex}      % INCLUDE Results
+\input{mainmatter/1_background.tex} % INCLUDE Introduction
+\input{mainmatter/2_methods.tex}      % INCLUDE Methods
+\input{mainmatter/3_objectives.tex}         % INCLUDE Hypothesis
+\input{mainmatter/4_description_projects.tex}    % INCLUDE Rationale
+\input{mainmatter/5_results.tex}      % INCLUDE Results
 %\input{mainmatter/discussion.tex}   % INCLUDE Discussion
 %\input{mainmatter/conclusion.tex}   % INCLUDE Conclusion
-\input{mainmatter/perspectives.tex} % INCLUDE Perspectives
-\input{mainmatter/papers.tex}
+\input{mainmatter/6_perspectives.tex} % INCLUDE Perspectives
+\input{mainmatter/7_papers.tex}
 
 
 % -------------------------- 
 % Back matter
 % --------------------------
-\input{frontbackmatter/bibliography.tex}
+\input{frontbackmatter/7_bibliography.tex}
 %\input{frontbackmatter/appendix.tex}
 
 
