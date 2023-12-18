@@ -796,7 +796,7 @@
 \def\MYthesisname{\fontseries{m}\selectfont}
 \def\KU@SUBMISSIONSTATEMENT{%
 This thesis has been submitted to the Graduate School
-of the Faculty of Health and Medical Sciences, University of Copenhagen% Added "on \today"
+of the Faculty of Health and Medical Sciences, University of Copenhagen on \today
 }
 
 \newcommand\makekutitle{
@@ -804,29 +804,32 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen% Added "
   \AddToShipoutPicture*{\put( -85, -95){\includegraphics*{logos/ku-logo}}}
   \AddToShipoutPicture*{\put(-35,   -115){\includegraphics*{logos/\thesisTheme-english}}}
 
-  \ifthenelse{\equal{\frontpageimage}{}}{}{
-    \AddToShipoutPicture*{\put(80, 200){
-      {\includegraphics*[width=120mm, height=120mm]{theme/\frontpageimage}}
-    }}
-  }
 
   \begin{textblock}{12}(1.14, 11.5)
-    \noindent\fontsize{16pt}{18pt}\KUsemibold\thesisSubject
+	\centering
+	\noindent\fontsize{19pt}{23pt}\KUsemibold\thesisTitle
   \end{textblock}
 
   \begin{textblock}{12}(1.14, 12)
-    \noindent\fontsize{19pt}{23pt}\KUsemibold\thesisTitle
+	\centering
+	\noindent\fontsize{16pt}{18pt}\KUsemibold\thesisSubject
     \par\vspace{1mm}
     \noindent\fontsize{14pt}{16pt}\KUsemibold\thesisName
   \end{textblock}
 
+  \ifthenelse{\equal{\frontpageimage}{}}{}{
+    \AddToShipoutPicture*{\put(80, 200){
+      {\includegraphics*[width=120mm, height=120mm]{theme/\frontpageimage}}
+    }}
+  }  
+
   \begin{textblock}{12}(1.14, 13)
     \par\vspace{0.2mm}
-    \begingroup
+%     \begingroup
       \par\vspace{8mm}
-      \noindent\thesisDate
-    \endgroup
-    \par\vspace{1mm}
+%       \noindent\thesisDate
+%     \endgroup
+    % \par\vspace{1mm}
     \fontsize{11pt}{12pt}
     \noindent\KU@SUBMISSIONSTATEMENT
   \end{textblock}
