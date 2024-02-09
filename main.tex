@@ -16,10 +16,10 @@
 % *********************************************************
 \documentclass[%
 	paper=B5,					% paper size
-	12pt,						% font size
+	11pt,						% font size
 	twoside=true,				% two-sided printing
 	openright,					% doublepage cleaning ends up right side
-	parskip=full,				% spacing value / method for paragraphs
+	parskip=full,				% spacing value / method for paragraphs, half*, half, half-
 	chapterprefix=true,			% prefix for chapter marks
 	headings=normal,			% size of headings
 	bibliography=totoc,			% include bib in toc
@@ -42,12 +42,15 @@
 \newcommand{\thesisName}{NAME SURNAME}
 \newcommand{\thesisSubject}{PhD thesis}
 \newcommand{\thesisDate}{\today}
-\newcommand{\thesisVersion}{v11062022}
+\newcommand{\thesisVersion}{v240208}
 
 % Supervisors & Collaborators
-\newcommand{\thesisExternalSupervisor}{SUPERVISOR}
-\newcommand{\thesisInternalSupervisor}{SUPERVISOR}
-\newcommand{\thesisCollab}{If any?}
+
+\newcommand{\thesisPrincipalSupervisor}{SUPERVISOR}
+\newcommand{\thesisCoSupervisor}{COSUPERVISOR}
+\newcommand{\thesisExternalSupervisor}{External Supervisor}
+\newcommand{\thesisMainInstitut}{Novo Nordisk Foundation Center for Metabolic Research, University of Copenhagen}
+% \newcommand{\thesisCollab}{If any?}
 
 % University of Copenhagen
 \newcommand{\thesisUniversity}{\protect{University of Copenhagen}}
@@ -101,8 +104,8 @@ title=Box~\thetcbcounter~#2, #1}
 
 \newcommand\blankpagenumbered{%
     \null
-    %\thispagestyle{empty}%
-    %\addtocounter{page}{-1}%
+    \thispagestyle{plain}%
+    \addtocounter{page}{-1}%
     \newpage}
 
 % *********************************************************
@@ -119,7 +122,7 @@ title=Box~\thetcbcounter~#2, #1}
     colortheme={\thesisTheme},  % ucph, sund, science, hum, etc.?
     bibsys=biber,
     bibfile=references,       % defines your .bib file
-    bibstyle=nature,        % refer to https://da.overleaf.com/learn/latex/Biblatex_citation_styles
+    bibstyle=authoryear,      % refer to https://da.overleaf.com/learn/latex/Biblatex_citation_styles
 ]{ucphthesis}
 \hypersetup{					% setup the hyperref-package options
 	pdftitle={\thesisTitle},	% 	- title (PDF meta)
@@ -144,9 +147,9 @@ title=Box~\thetcbcounter~#2, #1}
 % Cover page content
 % *********************************************************
 %\subject{\vspace{4.5cm} \thesisSubject}
-%\title{\thesisTitle}
-%\author{\thesisName}
-%\date{\thesisDate}
+\title{\thesisTitle}
+\author{\thesisName}
+\date{\thesisDate}
 
 
 % ********************************************************* 
@@ -175,6 +178,7 @@ title=Box~\thetcbcounter~#2, #1}
 \input{frontbackmatter/2_acknowledgements.tex} % INCLUDE Acknowledgements
 \input{frontbackmatter/3_summary.tex}      % INCLUDE summary
 \input{frontbackmatter/4_danish_summary.tex}      % INCLUDE danish summary
+\input{frontbackmatter/4_publications} % INCLUDE list of publications
 \input{frontbackmatter/5_abbreviations.tex}    % INCLUDE Rationale
 \input{frontbackmatter/6_figures_tables.tex}    % INCLUDE Rationale
 \clearpage
@@ -196,17 +200,17 @@ title=Box~\thetcbcounter~#2, #1}
 \setcounter{page}{1}			% set page counter
 \pagestyle{maincontentstyle} 	% fancy header and footer
 
+\input{mainmatter/0_content}
 \input{mainmatter/1_background.tex} % INCLUDE Introduction
 \input{mainmatter/2_methods.tex}      % INCLUDE Methods
 \input{mainmatter/3_objectives.tex}         % INCLUDE Hypothesis
 \input{mainmatter/4_description_projects.tex}    % INCLUDE Rationale
 \input{mainmatter/5_results.tex}      % INCLUDE Results
-%\input{mainmatter/discussion.tex}   % INCLUDE Discussion
-%\input{mainmatter/conclusion.tex}   % INCLUDE Conclusion
 \input{mainmatter/6_perspectives.tex} % INCLUDE Perspectives
 \input{mainmatter/7_papers.tex}
 
-
+%\input{mainmatter/discussion.tex}   % INCLUDE Discussion
+%\input{mainmatter/conclusion.tex}   % INCLUDE Conclusion
 % -------------------------- 
 % Back matter
 % --------------------------

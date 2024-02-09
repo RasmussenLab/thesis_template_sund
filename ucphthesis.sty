@@ -330,10 +330,10 @@
 	includefoot,					% 	- include footer space
 	includemp,						% 	- include side note space
 	bindingoffset=0.5cm,			% 	- binding correction (exclude with even margins)
-	top=2.5cm,						% 	- total body: top margin % MY CHANGES: Set to 2.5 instead of 1cm (mirrors footer space 
-	left=1.5cm,					% 	- total body: left margin (odd pages)(2.75 for even margins)
+	top=1.5cm,						% 	- total body: top margin % MY CHANGES: Set to 2.5 instead of 1cm (mirrors footer space 
+	left=1cm,						% 	- total body: left margin (odd pages)(2.75 for even margins)
 	right=0.5cm,					% 	- total body: right margin (odd pages)
-	bottom=1.5cm,					% 	- total body: bottom margin
+	bottom=1cm,						% 	- total body: bottom margin
 	marginparwidth=1.75cm,			% 	- width for side note
 	marginparsep=10pt,				% 	- space between notes and body text (content)
 	footskip=1cm,					% 	- footer skip size % MY CHANGES: set to 1cm instead of 2 cm
@@ -353,20 +353,22 @@
 	hyperref=true,					% 	- activate hyperref support
 	backref=false,					% 	- activate backrefs
 	isbn=false,						% 	- don't show isbn tags
-	url=false,						% 	- don't show url tags
-	doi=false,						% 	- don't show doi tags
+	url=true,						% 	- don't show url tags
+	doi=true,						% 	- don't show doi tags
 	urldate=long,					% 	- display type for dates
 	uniquename=false,               %   - remove first names
 	uniquelist=minyear,
-%	maxnames=3,%
+	maxnames=15,%
 %	minnames=1,%
 	maxbibnames=10,%
 	minbibnames=3,%
 	maxcitenames=2,%
-%	mincitenames=1%
+	mincitenames=1%
 ]{biblatex}
 \bibliography{\cthesis@bibfile}
-
+% make \fullcite show all authors (up to 99)
+% https://tex.stackexchange.com/questions/126226/how-do-i-instruct-fullcite-to-use-maxbibnames-rather-than-maxcitenames/267089#267089
+\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}} 
 \DefineBibliographyStrings{english}{%
 	andothers = {{\textit{et\,al\adddot}}}, % 'et al.' in italics
 }
@@ -802,20 +804,31 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen on \toda
 \newcommand\makekutitle{
   \thispagestyle{empty}
   \AddToShipoutPicture*{\put( -85, -95){\includegraphics*{logos/ku-logo}}}
-  \AddToShipoutPicture*{\put(-35,   -115){\includegraphics*{logos/\thesisTheme-english}}}
+  \AddToShipoutPicture*{\put(-35, -115){\includegraphics*{logos/sund-english}}}
 
 
-  \begin{textblock}{12}(1.14, 11.5)
+  \begin{textblock}{14}(1.14, 4)
 	\centering
 	\noindent\fontsize{19pt}{23pt}\KUsemibold\thesisTitle
   \end{textblock}
 
-  \begin{textblock}{12}(1.14, 12)
+  \begin{textblock}{14}(1.14, 5)
 	\centering
 	\noindent\fontsize{16pt}{18pt}\KUsemibold\thesisSubject
-    \par\vspace{1mm}
+    \par\vspace{-5mm}
     \noindent\fontsize{14pt}{16pt}\KUsemibold\thesisName
   \end{textblock}
+
+  \begin{textblock}{14}(1.14, 6.2)
+	\centering
+	\noindent\fontsize{11pt}{11pt}Principal supervisor: \thesisPrincipalSupervisor
+  \end{textblock}
+
+   \begin{textblock}{20}(1.01, 6.8)
+    \hspace{-2cm}
+     \rule{20cm}{2pt}
+    \end{textblock}
+
 
   \ifthenelse{\equal{\frontpageimage}{}}{}{
     \AddToShipoutPicture*{\put(80, 200){
