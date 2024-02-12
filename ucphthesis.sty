@@ -829,25 +829,23 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen on \toda
      \rule{20cm}{2pt}
     \end{textblock}
 
-
+% ! Frontpage layout: Quite hacky... 
   \ifthenelse{\equal{\frontpageimage}{}}{}{
-    \AddToShipoutPicture*{\put(80, 200){
+    \AddToShipoutPicture*{\put(80, 65){
       {\includegraphics*[width=120mm, height=120mm]{theme/\frontpageimage}}
     }}
   }  
+  \begin{textblock}{12}(1.14, 14.6)
 
-  \begin{textblock}{12}(1.14, 13)
-    \par\vspace{0.2mm}
-%     \begingroup
-      \par\vspace{8mm}
-%       \noindent\thesisDate
-%     \endgroup
-    % \par\vspace{1mm}
+    \hspace{-3cm}
+    \rule{20cm}{2pt}
+    \par
+    \vspace{-0.5cm}
+
     \fontsize{11pt}{12pt}
     \noindent\KU@SUBMISSIONSTATEMENT
   \end{textblock}
-
-
+  
   \phantom{...}
   \newpage
   \noindent
