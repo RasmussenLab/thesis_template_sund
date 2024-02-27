@@ -1,3 +1,46 @@
 % Cover back page
 \AddToShipoutPicture*{\TitleWatermark}% adding watermark
-\afterpage{\blankpage}
+% \afterpage{\blankpage}
+\title{\thesisTitle}
+\date{\thesisDate}
+\maketitle
+\begin{fullwidth}
+
+  \newcommand{\affiliation}[1]{{\small #1}}
+  
+  \thispagestyle{empty}
+  \setlength{\parindent}{0pt}
+  \setlength{\parskip}{\baselineskip}
+  
+  %
+  {\Large \textbf{Author}}
+  
+  \textbf{\thesisName} \\
+  \affiliation{Novo Nordisk Foundation Center for Protein Research, University of Copenhagen}
+
+  %
+  {\Large \textbf{Supervisors}}
+  
+  \textbf{\thesisPrincipalSupervisor}, Professor, PhD \\
+  \affiliation{\thesisMainInstitut}\\
+  \affiliation{Novo Nordisk Foundation Center for Metabolomics Research, University of Copenhagen} \\
+  \affiliation{The Novo Nordisk Foundation Center for Genomic Mechanisms of Disease, Broad Institute of MIT and Harvard} \\
+  (Principal Supervisor)\vspace{0.4em}\\
+  \textbf{\thesisCoSupervisor}, Professor, PhD \\
+  \affiliation{\thesisMainInstitut} \\
+  (Primary Co-supervisor) \vspace{0.4em} \\
+  \textbf{\thesisExternalSupervisor}, Professor, PhD \\
+  \affiliation{Novo Nordisk Foundation Center for Metabolomics Research, University of Copenhagen}\\
+  (External supervisor)
+
+  %
+  {\Large \textbf{Assessment committee}}
+  
+  \textbf{Firt Last}, Associate Professor, PhD (chair) \\
+  \affiliation{\thesisMainInstitut}\vspace{0.4em}\\
+  \textbf{First Last}, Associate Professor, PhD \\
+  \affiliation{Department of Biotechnology and Biomedicine, Technical University of Denmark}\vspace{0.4em}\\
+  \textbf{First Last}, Associate Professor, Dr.\\
+  \affiliation{VIB-UGent Center for Medical Biotechnology, VIB, Belgium}\vspace{0.4em}\\
+  %    
+\end{fullwidth}
