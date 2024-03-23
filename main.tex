@@ -10,6 +10,7 @@
 % *********************************************************
 \newcommand{\thesisTheme}{ucph} % to colortheme and titlepage image
 \newcommand{\frontpageimage}{cover_image.png} % cover image
+\newcommand{\defaultpagestyle}{plain} % empty: no page number on empty pages
 
 \DeclareUnicodeCharacter{0308}{HERE!HERE!} % I had issues with this character ...
 % *********************************************************
@@ -192,7 +193,8 @@ title=Box~\thetcbcounter~#2, #1}
   \tableofcontents
 }
 \clearpage
-
+% make sure there the frontmatter ends on an even page.
+\input{mainmatter/0_content}
 
 % -------------------------- 
 % Main matter
@@ -201,7 +203,6 @@ title=Box~\thetcbcounter~#2, #1}
 \setcounter{page}{1}			% set page counter
 \pagestyle{maincontentstyle} 	% fancy header and footer
 
-\input{mainmatter/0_content}
 \input{mainmatter/1_background.tex} % INCLUDE Introduction
 \input{mainmatter/2_methods.tex}      % INCLUDE Methods
 \input{mainmatter/3_objectives.tex}         % INCLUDE Hypothesis
