@@ -92,7 +92,7 @@
 % OPTION bibstyle
 % --> values = alphabetic|numeric|authoryear
 \define@choicekey*[ct]{cthesis}{bibstyle}[\val\bibstylenr]{alphabetic,numeric,authoryear,nature}[alphabetic]{\def\cthesis@bibstyle{#1}}
-\setkeys[ct]{cthesis}{bibstyle=numeric}
+\setkeys[ct]{cthesis}{bibstyle=authoryear}
 
 \DeclareOptionX*{
 	\PackageWarning{ucphthesis}{Unknown option ‘\CurrentOption’}%
@@ -351,18 +351,20 @@
 	natbib=true,					% 	- allow natbib commands
 	dashed=false,                   %   - ensures duplicate author mentions
 	hyperref=true,					% 	- activate hyperref support
-	backref=false,					% 	- activate backrefs
+	%backref=false,					% 	- activate backrefs
 	isbn=false,						% 	- don't show isbn tags
 	url=true,						% 	- don't show url tags
 	doi=true,						% 	- don't show doi tags
-	urldate=long,					% 	- display type for dates
-	uniquename=false,               %   - remove first names
-	uniquelist=minyear,
+	%urldate=long,					% 	- display type for dates
+	%uniquename=false,               %   - remove first names
+    date=year,
+    firstinits=true,
+	uniquelist=false,
 	maxnames=15,%
 %	minnames=1,%
 	maxbibnames=10,%
 	minbibnames=3,%
-	maxcitenames=2,%
+	maxcitenames=1,%
 	mincitenames=1%
 ]{biblatex}
 \bibliography{\cthesis@bibfile}
@@ -807,14 +809,17 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen on \thes
   \AddToShipoutPicture*{\put(-35, -115){\includegraphics*{logos/sund-english}}}
 
 
-  \begin{textblock}{14}(1.14, 4)
+  \begin{textblock}{14}(1.14, 3.65) % last was 4 before
 	\centering
-	\noindent\fontsize{19pt}{23pt}\KUsemibold\thesisTitle
+	\noindent\fontsize{19pt}{23pt}\KUsemibold % set the font size (19pt)
+	\thesisTitle
+	% % you can also manipulate it futher to get your title in specified line breaks
+	% First line\\seond line
   \end{textblock}
 
-  \begin{textblock}{14}(1.14, 5)
+  \begin{textblock}{14}(1.14, 5.13)
 	\centering
-	\noindent\fontsize{16pt}{18pt}\KUsemibold\thesisSubject
+	\noindent\fontsize{16pt}{18pt}\KUsemibold\thesisSubject % 16
     \par\vspace{-5mm}
     \noindent\fontsize{14pt}{16pt}\KUsemibold\thesisName
   \end{textblock}
@@ -826,19 +831,19 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen on \thes
 
    \begin{textblock}{20}(1.01, 6.8)
     \hspace{-2cm}
-     \rule{20cm}{2pt}
+     %\rule{20cm}{2pt}
     \end{textblock}
 
 % ! Frontpage layout: Quite hacky... 
   \ifthenelse{\equal{\frontpageimage}{}}{}{
-    \AddToShipoutPicture*{\put(80, 65){
-      {\includegraphics*[width=120mm, height=120mm]{theme/\frontpageimage}}
+    \AddToShipoutPicture*{\put(38, 26){ % 80, 65
+      {\includegraphics*[width=150mm, height=150mm]{theme/\frontpageimage}} % 120
     }}
   }  
   \begin{textblock}{12}(1.14, 14.6)
 
     \hspace{-3cm}
-    \rule{20cm}{2pt}
+    %\rule{20cm}{2pt}
     \par
     \vspace{-0.5cm}
 
