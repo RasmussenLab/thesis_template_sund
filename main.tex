@@ -69,7 +69,8 @@
 \newcommand{\https}[1]{\href{https://#1}{#1}}            % make any https link
 %\usepackage{enumitem}                                   % Make item lists without numbers/bullets - already included in ucphthesis, therefore commented out here
 \usepackage{dirtytalk}                                  % In-line quotations using \say{}
-\usepackage{siunitx}                                    % units
+% \usepackage{siunitx}                                    % SI units
+% \usepackage{textgreek}                                  % Greek letters in text
 \usepackage{multirow}                                   % Multirow in table
 \usepackage{graphicx}                                   % More table stuff
 \usepackage{makecell}                                   % Get linebreak in table cell
@@ -147,8 +148,9 @@ title=Box~\thetcbcounter~#2, #1}
 	bookmarksopen=true			%
     }
 
-\counterwithout{figure}{chapter} % count figures without chapter
-\usepackage{textgreek}
+% Activate to count figures without chapter
+% \counterwithout{figure}{chapter}
+
 % *********************************************************
 % Cover page content
 % *********************************************************
@@ -190,15 +192,15 @@ title=Box~\thetcbcounter~#2, #1}
 \clearpage
 
 
-\setcounter{tocdepth}{3}		% define depth of toc
+\setcounter{tocdepth}{2}		% define depth of toc
 %\tableofcontents				% display table of contents
 {
   \hypersetup{linkcolor=black}
   \tableofcontents
 }
 \clearpage
-%% make sure there the frontmatter ends on an even page.
-%\input{mainmatter/0_content}
+% make sure there the frontmatter ends on an even page.
+\input{mainmatter/0_content}
 
 % -------------------------- 
 % Main matter
