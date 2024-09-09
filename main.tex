@@ -69,6 +69,8 @@
 \newcommand{\https}[1]{\href{https://#1}{#1}}            % make any https link
 %\usepackage{enumitem}                                   % Make item lists without numbers/bullets - already included in ucphthesis, therefore commented out here
 \usepackage{dirtytalk}                                  % In-line quotations using \say{}
+% \usepackage{siunitx}                                    % SI units
+% \usepackage{textgreek}                                  % Greek letters in text
 \usepackage{multirow}                                   % Multirow in table
 \usepackage{graphicx}                                   % More table stuff
 \usepackage{makecell}                                   % Get linebreak in table cell
@@ -84,11 +86,12 @@
 	\includepdfset{
 		pages = {1-}, % from page 1 to the final page
 		pagecommand = {}, % uses global document layout
-		frame = true, % draw discrete border around page
+		frame = false, % draw discrete border around page
 		offset = 0mm 0mm, % outward/upward
-		scale = 0.84,
+		scale = 1, %0.84
     link=true, % allow pointing to inserted pages
-    rotateoversize % rotates landscape pages
+    height=\textheight,
+    %rotateoversize % rotates landscape pages
 	}
  \newcommand{\includepdfsupp}{                         % Insert supplementary pdf
   \includepdf[
@@ -144,6 +147,9 @@ title=Box~\thetcbcounter~#2, #1}
 	bookmarksnumbered=true,		%
 	bookmarksopen=true			%
     }
+
+% Activate to count figures without chapter
+% \counterwithout{figure}{chapter}
 
 % *********************************************************
 % Cover page content
