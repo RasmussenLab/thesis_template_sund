@@ -10,7 +10,31 @@
 
 # Readme
 
-Thanks to Torie M. Muse, Davide Placido, Agnete T. Lundgaard and benja for their additons to the current layout.
+Thanks to Torie M. Muse, Davide Placido, Agnete T. Lundgaard, Benjamin Furtwängler 
+and benja for their additons to the current layout. 
+
+## Overview and instruction for use
+
+`main.tex` defines most relevant parameters and the combines the files in the `frontbackmatter`
+and `mainmatter` folders. The `ucphthesis.sty` file contains the style definitions, 
+where you can look for adaption to the front page or citation styles.
+The `references.bib` file contains the bibliography entries which you need to replace 
+with an export from your preferred reference manager.
+
+`figures`, `logos` and `papers` are folders for your figures, logos and papers - i.e. 
+static files which you want to include in your document.
+
+## Workflow example
+
+You write you main text inserting your references through a plugin into word or google docs.
+You can then export the references to a `.bib` file and replace the `references.bib` file.
+The document can be transferred using `pandoc` to a `.tex` file. Overleaf (you can import this 
+repository directly) offeres than lots of functionality for editing the document- e.g. 
+updating the citations and references in the text. 
+
+You can view the current repository in overleaf by clicking
+[here](https://www.overleaf.com/read/cdnzwzrqxmyf#f04a50)
+
 
 
 ## README by Rolad-Arbøl
