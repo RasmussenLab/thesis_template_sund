@@ -809,7 +809,7 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen on \thes
   \AddToShipoutPicture*{\put(-35, -115){\includegraphics*{logos/sund-english}}}
 
 
-  \begin{textblock}{14}(1.14, 3.65) % last was 4 before
+  \begin{textblock}{14}(1.14, 4) % last was 4 before
 	\centering
 	\noindent\fontsize{19pt}{23pt}\KUsemibold % set the font size (19pt)
 	\thesisTitle
@@ -836,8 +836,9 @@ of the Faculty of Health and Medical Sciences, University of Copenhagen on \thes
 
 % ! Frontpage layout: Quite hacky... 
   \ifthenelse{\equal{\frontpageimage}{}}{}{
-    \AddToShipoutPicture*{\put(38, 26){ % 80, 65
-      {\includegraphics*[width=150mm, height=150mm]{theme/\frontpageimage}} % 120
+    \AddToShipoutPicture*{\put(80, 65){ % where to place
+      % adapt height and width in case you image is different
+      {\includegraphics*[width=120mm, height=120mm]{theme/\frontpageimage}}
     }}
   }  
   \begin{textblock}{12}(1.14, 14.6)
